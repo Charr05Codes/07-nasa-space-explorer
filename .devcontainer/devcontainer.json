@@ -2,8 +2,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "GitHub.copilot",
-        "ms-vscode.live-server"
+        "GitHub.copilot"
       ],
       "settings": {
         "livePreview.autoRefreshPreview": "On All Changes in Editor",

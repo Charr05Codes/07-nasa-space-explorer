@@ -1,21 +1,24 @@
-/* Global reset & box sizing */
+/* Global reset and box sizing */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Base page styles */
+/* NASA-inspired base colors and typography */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f1f1f1;
-  padding: 20px;
+  min-height: 100vh;
+  font-family: Inter, Arial, sans-serif;
+  background-color: #06152f;
+  background-image: radial-gradient(circle at 50% 0%, #123d77 0, #06152f 42%);
+  color: #ffffff;
+  padding: 24px;
 }
 
-/* Centered container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 30px;
 }
 
 /* Header */
@@ -23,94 +26,151 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding: 22px 0 28px;
+  margin-bottom: 12px;
 }
 
 h1 {
-  font-family: Verdana, sans-serif;
-  font-weight: bold;
-  color: #212121;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(11, 61, 145, 0.7);
 }
 
-/* Logo */
 .logo {
-  width: 140px;
-  margin-right: 15px;
+  width: 135px;
+  margin-right: 18px;
 }
 
-/* Date‐picker & button row */
+/* Date controls */
 .filters {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
-  margin-bottom: 20px;
-  padding: 0 20px;
+  margin: 0 auto 28px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background-color: rgba(11, 61, 145, 0.28);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Inputs and buttons */
 input[type="date"],
 button {
-  font-family: Arial, sans-serif;
-  font-weight: normal;
-  color: #666;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  line-height: 1.4;
+  min-height: 46px;
   width: 100%;
+  padding: 10px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
-/* Button specific */
+input[type="date"] {
+  color: #13213b;
+  background-color: #ffffff;
+}
+
 button {
-  background-color: #d3d3d3;
-  color: black;
+  border-color: #fc3d21;
+  background-color: #fc3d21;
+  color: #ffffff;
   cursor: pointer;
-}
-button:hover {
-  background-color: #bfbfbf;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-/* Stack horizontally on wider screens */
+button:hover {
+  background-color: #d92e17;
+  box-shadow: 0 5px 16px rgba(252, 61, 33, 0.35);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+  transform: none;
+}
+
+button:focus-visible,
+input[type="date"]:focus-visible,
+.gallery-item img:focus-visible {
+  outline: 3px solid #fc3d21;
+  outline-offset: 3px;
+}
+
+/* Stack controls horizontally on wider screens */
 @media (min-width: 600px) {
   .filters {
     flex-direction: row;
     padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
   }
-  
+
   input[type="date"],
   button {
-    width: auto;
+    width: 220px;
   }
 }
 
-/* Gallery flex container */
+/* Random space fact */
+.space-fact {
+  max-width: 800px;
+  margin: 0 auto 28px;
+  padding: 22px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 4px solid #fc3d21;
+  border-radius: 12px;
+  background-color: rgba(11, 61, 145, 0.32);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.space-fact h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-shadow: 0 2px 10px rgba(11, 61, 145, 0.7);
+}
+
+.space-fact p {
+  margin-top: 10px;
+  color: #dbe8ff;
+  line-height: 1.6;
+}
+
+/* Gallery */
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
+  gap: 24px;
+  padding: 0;
   justify-content: center;
 }
 
-/* Gallery items */
 .gallery-item {
-  flex: 1 1 100%;  /* full width by default */
+  flex: 1 1 100%;
   min-width: 280px;
   max-width: 500px;
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background-color: #102750;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-/* Three columns on wider screens */
+.gallery-item:hover {
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.42);
+}
+
 @media (min-width: 1000px) {
   .gallery-item {
     flex: 0 1 31%;
@@ -121,24 +181,206 @@ button:hover {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.gallery-video {
+  width: 100%;
+  height: 200px;
+  border: 0;
+  border-radius: 9px;
+  background-color: #06152f;
+}
+
+.video-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  padding: 20px;
+  border-radius: 9px;
+  background-color: #06152f;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 600;
+}
+
+.video-link:hover,
+.video-link:focus-visible {
+  color: #ffffff;
+  background-color: #0b3d91;
 }
 
 .gallery-item p {
   margin-top: 10px;
-  padding: 5px;
+  padding: 5px 4px 0;
   font-size: 14px;
+  color: #dbe8ff;
+  line-height: 1.5;
+}
+
+/* Reveal descriptions inside the card on hover-capable devices */
+.gallery-explanation {
+  max-height: 0;
+  overflow-y: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  color: #b7c9e8;
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+@media (hover: hover) {
+  .gallery-item:hover img {
+    transform: scale(1.06);
+  }
+
+  .gallery-item:hover .gallery-explanation {
+    max-height: 180px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    opacity: 1;
+  }
 }
 
 /* Placeholder content */
 .placeholder {
   flex: 1 1 100%;
-  text-align: center;
   padding: 40px;
-  color: #666;
+  color: #c3d4f4;
+  text-align: center;
 }
 
 .placeholder-icon {
-  font-size: 48px;
   margin-bottom: 20px;
+  font-size: 48px;
+}
+
+/* NASA-themed request progress indicator */
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto 20px;
+  color: #dbe8ff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.loading-indicator[hidden] {
+  display: none;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(219, 232, 255, 0.35);
+  border-top-color: #fc3d21;
+  border-right-color: #0b3d91;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Modal overlay and centered content */
+.image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(2, 10, 28, 0.88);
+}
+
+.image-modal[hidden] {
+  display: none;
+}
+
+.modal-content {
+  position: relative;
+  width: min(900px, 100%);
+  max-height: 95vh;
+  overflow-y: auto;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background-color: #102750;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content img {
+  display: block;
+  width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border-radius: 9px;
+}
+
+.modal-content h2 {
+  margin-top: 15px;
+  color: #ffffff;
+}
+
+.modal-content p {
+  margin-top: 10px;
+  color: #dbe8ff;
+  line-height: 1.5;
+}
+
+.modal-explanation {
+  color: #b7c9e8;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: #0b3d91;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: #fc3d21;
+}
+
+@media (max-width: 600px) {
+  .image-modal {
+    padding: 10px;
+  }
+
+  .modal-content {
+    padding: 15px;
+  }
+
+  .modal-content h2 {
+    font-size: 20px;
+  }
+
+  .site-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .logo {
+    margin-right: 0;
+  }
 }
